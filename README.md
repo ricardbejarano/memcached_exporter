@@ -9,18 +9,18 @@
 
 Available on [Docker Hub](https://hub.docker.com) as [`ricardbejarano/memcached_exporter`](https://hub.docker.com/r/ricardbejarano/memcached_exporter):
 
-- [`0.6.0`, `master`, `latest` *(Dockerfile)*](https://github.com/ricardbejarano/memcached_exporter/blob/master/Dockerfile)
+- [`0.6.0`, `master`, `latest` *(Dockerfile)*](https://github.com/ricardbejarano/memcached_exporter/blob/master/Dockerfile) (about `13.5MB`)
 
 ### Quay
 
 Available on [Quay](https://quay.io) as [`quay.io/ricardbejarano/memcached_exporter`](https://quay.io/repository/ricardbejarano/memcached_exporter):
 
-- [`0.6.0`, `master`, `latest` *(Dockerfile)*](https://github.com/ricardbejarano/memcached_exporter/blob/master/Dockerfile)
+- [`0.6.0`, `master`, `latest` *(Dockerfile)*](https://github.com/ricardbejarano/memcached_exporter/blob/master/Dockerfile) (about `13.5MB`)
 
 
 ## Features
 
-* Super tiny (about `13.5MB`)
+* Super tiny (see [Tags](#tags))
 * Binary pulled from official sources during build time
 * Built `FROM scratch`, with zero bloat (see [Filesystem](#filesystem))
 * Reduced attack surface (no shell, no UNIX tools, no package manager...)
