@@ -1,7 +1,7 @@
 FROM alpine:3 AS build
 
-ARG VERSION="0.6.0"
-ARG CHECKSUM="20382d37ca99bbde2661fdbfb43a181f95d68889b761e56b39678e31bb23b64c"
+ARG VERSION="0.7.0"
+ARG CHECKSUM="a8dec3f2493330159b02ab5f8916726d2d41d70170f23206b1987cdb450a839b"
 
 ADD https://github.com/prometheus/memcached_exporter/releases/download/v$VERSION/memcached_exporter-$VERSION.linux-amd64.tar.gz /tmp/memcached_exporter.tar.gz
 

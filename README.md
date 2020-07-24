@@ -9,13 +9,13 @@
 
 Available on [Docker Hub](https://hub.docker.com) as [`ricardbejarano/memcached_exporter`](https://hub.docker.com/r/ricardbejarano/memcached_exporter):
 
-- [`0.6.0`, `master`, `latest` *(Dockerfile)*](https://github.com/ricardbejarano/memcached_exporter/blob/master/Dockerfile) (about `13.5MB`)
+- [`0.7.0`, `master`, `latest` *(Dockerfile)*](https://github.com/ricardbejarano/memcached_exporter/blob/master/Dockerfile) (about `13.5MB`)
 
 ### Quay
 
 Available on [Quay](https://quay.io) as [`quay.io/ricardbejarano/memcached_exporter`](https://quay.io/repository/ricardbejarano/memcached_exporter):
 
-- [`0.6.0`, `master`, `latest` *(Dockerfile)*](https://github.com/ricardbejarano/memcached_exporter/blob/master/Dockerfile) (about `13.5MB`)
+- [`0.7.0`, `master`, `latest` *(Dockerfile)*](https://github.com/ricardbejarano/memcached_exporter/blob/master/Dockerfile) (about `13.5MB`)
 
 
 ## Features
