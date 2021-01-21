@@ -1,23 +1,29 @@
-FROM alpine:3 AS build
+FROM golang:1-alpine AS build
 
-ARG VERSION="0.7.0"
-ARG CHECKSUM="a8dec3f2493330159b02ab5f8916726d2d41d70170f23206b1987cdb450a839b"
+ARG VERSION="0.8.0"
+ARG CHECKSUM="a861ade4ad1a6ab8298b1a0a7228c7ba8331baefc66dfeade72b51b2981fd680"
 
-ADD https://github.com/prometheus/memcached_exporter/releases/download/v$VERSION/memcached_exporter-$VERSION.linux-amd64.tar.gz /tmp/memcached_exporter.tar.gz
+ADD https://github.com/prometheus/memcached_exporter/archive/v$VERSION.tar.gz /tmp/memcached_exporter.tar.gz
 
 RUN [ "$CHECKSUM" = "$(sha256sum /tmp/memcached_exporter.tar.gz | awk '{print $1}')" ] && \
-    tar -C /tmp -xf /tmp/memcached_exporter.tar.gz
+    apk add ca-certificates curl make && \
+    tar -C /tmp -xf /tmp/memcached_exporter.tar.gz && \
+    mkdir -p /go/src/github.com/prometheus && \
+    mv /tmp/memcached_exporter-$VERSION /go/src/github.com/prometheus/memcached_exporter && \
+    cd /go/src/github.com/prometheus/memcached_exporter && \
+      make build
 
-RUN mkdir -p /rootfs/etc && \
-    cp /tmp/memcached_exporter-$VERSION.linux-amd64/memcached_exporter /rootfs/ && \
-    echo "nogroup:*:100:nobody" > /rootfs/etc/group && \
-    echo "nobody:*:100:100:::" > /rootfs/etc/passwd
+RUN mkdir -p /rootfs/bin && \
+      cp /go/src/github.com/prometheus/memcached_exporter/memcached_exporter /rootfs/bin/ && \
+    mkdir -p /rootfs/etc && \
+      echo "nogroup:*:10000:nobody" > /rootfs/etc/group && \
+      echo "nobody:*:10000:10000:::" > /rootfs/etc/passwd
 
 
 FROM scratch
 
-COPY --from=build --chown=100:100 /rootfs /
+COPY --from=build --chown=10000:10000 /rootfs /
 
-USER 100:100
+USER 10000:10000
 EXPOSE 9150/tcp
-ENTRYPOINT ["/memcached_exporter"]
+ENTRYPOINT ["/bin/memcached_exporter"]
