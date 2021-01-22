@@ -5,7 +5,7 @@ ARG CHECKSUM="a861ade4ad1a6ab8298b1a0a7228c7ba8331baefc66dfeade72b51b2981fd680"
 
 ADD https://github.com/prometheus/memcached_exporter/archive/v$VERSION.tar.gz /tmp/memcached_exporter.tar.gz
 
-RUN [ "$CHECKSUM" = "$(sha256sum /tmp/memcached_exporter.tar.gz | awk '{print $1}')" ] && \
+RUN [ "$(sha256sum /tmp/memcached_exporter.tar.gz | awk '{print $1}')" = "$CHECKSUM" ] && \
     apk add ca-certificates curl make && \
     tar -C /tmp -xf /tmp/memcached_exporter.tar.gz && \
     mkdir -p /go/src/github.com/prometheus && \
