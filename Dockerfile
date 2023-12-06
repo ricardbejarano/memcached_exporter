@@ -1,7 +1,7 @@
 FROM golang:1-alpine AS build
 
-ARG VERSION="0.13.1"
-ARG CHECKSUM="1fe01774ac4443dbca3152a9f21a49a8493152c0e78fbc24df97ebe2b53ae175"
+ARG VERSION="0.14.0"
+ARG CHECKSUM="61f66b3d260a16eba3ecdfbf161c7a0beb6516e76e7ba28c793c65719c48768e"
 
 ADD https://github.com/prometheus/memcached_exporter/archive/v$VERSION.tar.gz /tmp/memcached_exporter.tar.gz
 
